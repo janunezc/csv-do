@@ -1,0 +1,37 @@
+{
+  "name": "csv-do",
+  "version": "0.0.1",
+  "description": "Command line utilities for CSV based on NodeJS. Split, Group, Aggregate, Mix, Merge csv files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janunezc/csv-do.git"
+  },
+  "keywords": [
+    "CSV",
+    "SPLIT",
+    "Merge",
+    "Join",
+    "Utility",
+    "Command",
+    "Line",
+    "Aggregate",
+    "Data",
+    "Science"
+  ],
+  "author": "Jose Angel Nunez Chaves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janunezc/csv-do/issues"
+  },
+  "homepage": "https://github.com/janunezc/csv-do#readme",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "jnconsole": "^0.3.0",
+    "jnlogger": "^1.0.2",
+    "minimist": "^1.2.5"
+  }
+}

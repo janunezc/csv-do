@@ -41,14 +41,14 @@
         const valParams = split_validateParams(inputFilePath, columns, chunkSize, outputFolderPath);
 
         if (valParams) {
-            console.log("Parameters are valid");
+            console.log("Parameters are valid".green);
             console.log("Will split file: ", inputFilePath);
             console.log("Columns Spec:", columns);
             console.log("Chunk Size:", chunkSize);
             console.log("Output Folder:", outputFolderPath);
 
         } else {
-            console.error("Parameters are invalid!");
+            console.error("Parameters are invalid!".red);
         }
     }
 
@@ -59,10 +59,29 @@
             errorCount++;
         }
 
-        if (!columns && ! chunkSize) {
+        if (
+            (!columns && !chunkSize)
+            || (!columns && !chunkSize > 0)
+        ) {
             console.error("ERROR", "--columns or --chunk-size parameters are invalid!", columns, chunkSize);
             errorCount++;
         }
+
+        if (!chunkSize) {
+            try {
+
+                let colArray = JSON.parse(`[${columns}]`);
+                console.log("COLARRAY", colArray, chunkSize)
+                if (colArray && colArray.length === 0) {
+                    console.error("ERROR", "Invalid column array specification ( --columns )", columns, chunkSize);
+                    errorCount++;
+                }
+            } catch (ex) {
+                console.error("ERROR", "Invalid column array specification ( --columns )", columns, chunkSize);
+                errorCount++;
+            }
+        }
+
 
         if (!fs.existsSync(outputFolderPath)) {
             console.error("ERROR", "--output-folder parameter is invalid!", outputFolderPath);

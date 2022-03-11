@@ -4,9 +4,12 @@
   const minimist = require("minimist");
   const csv = require('csvtojson');
   const csvdo = require('./csv-do-lib');
+  const csvDoVersion = require("./package.json").version;
   const fs = require('fs');
+  var sc = require('SuperColors.js');
   let jnl = require("jnconsole");
   let lh = logHelper();
+  
 
   lh.splash();
   lh.usage();
@@ -61,7 +64,8 @@
 
         out("\n".repeat(30));
         out("-".repeat(30));
-        out("WELCOME TO YOUR CSV-DO APP\nYour swiss army knife for manipulating CSV files from the command line");
+        out("WELCOME TO YOUR CSV-DO APP\nYour swiss army knife for manipulating CSV files from the command line".green);
+        out("VERSION: ", `${csvDoVersion}`.brightYellow);
         out("With CSV-DO you can do operations on csv files such as split, join, aggregate, find duplicates through the command line.");
         out("\n (!) NOTICE THIS TOOL IS STILL NOT FUNCTIONAL AT ALL!")
       },

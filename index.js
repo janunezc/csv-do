@@ -89,9 +89,9 @@
         out("csv-do can perform the following functions for you on CSV files: split, join, aggregate, find-duplicates");
         out("Examples:");
 
-        out("SPLIT:      csv-do split --input-file ./myfile.csv --columns 2 --output-folder ./splitted/");
-        out("            csv-do split --input-file ./myfile.csv --columns 2,5 --output-folder ./splitted/");
-        out("            csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./splitted/");
+        out("SPLIT:      csv-do split --input-file ./myfile.csv --columns 2 --output-folder ./split/");
+        out("            csv-do split --input-file ./myfile.csv --columns 2,5 --output-folder ./split/");
+        out("            csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/");
 
         out("JOIN:       csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv");
         out("AGGREGATE:  csv-do aggregate --input-file ./myfile.csv --group-by \"1,2,3\" --function count -function-column 4 --output-file ./count.csv");

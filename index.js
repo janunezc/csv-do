@@ -4,7 +4,7 @@
   let jnl = require("jnconsole");
 
 
-  console.log("TITLE","WELCOME TO YOUR CSV-DO APP\nYour swiss army knife for manipulating CSV files from the command line");
+  console.log("TITLE","\n".repeat(30) + "WELCOME TO YOUR CSV-DO APP\nYour swiss army knife for manipulating CSV files from the command line");
   console.log("SUBTITLE","With CSV-DO you can do operations on csv files such as split, merge, aggregate, slice/dice through the command line");
 
   showUsage();

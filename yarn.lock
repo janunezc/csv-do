@@ -263,10 +263,10 @@ is-weakref@^1.0.1:
   dependencies:
     call-bind "^1.0.2"
 
-jnconsole@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/jnconsole/-/jnconsole-0.3.0.tgz#2d618dffa73746c399a1c1ce66cc02cec5832ee0"
-  integrity sha512-xN3NxSnbA8YXeuZtXO2Ei+++qbHlEDkvH9FMteWZTYmHyC1jezcd68JUF2WrgcQt5aazLqx/gkxBNBm2Ni5PuA==
+jnconsole@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/jnconsole/-/jnconsole-0.4.0.tgz#4a7985f6b02387198cb5548d5b8ac31310b9a07d"
+  integrity sha512-xSfxeHLeIyTJn7TR5wpvVlVcctAzfFQv5OtJbkZqbniDWuakaynYx3/CFVuqKfr13Bj2nEnDBcpjuvaRWzz4Iw==
   dependencies:
     assert "^2.0.0"
 

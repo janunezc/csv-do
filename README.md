@@ -15,23 +15,23 @@ npm i csv-do -g
 1. `split`: You provide an `input-file` and a `column` number that has values to group content by and splits one csv file into different files based on the content of that column.
 
 ```bash
-csv-do split -input-file ./myfile.csv -column 2 -output-folder ./splitted/
+csv-do split --input-file ./myfile.csv --column 2 --output-folder ./splitted/
 ```
 
 1. `join`: You provide an `input-folder` and an `output-file` path. The system will concatenate all CSV files in the input folder (ordered by name) and save it to the output file.
 
 ```bash
-csv-do join -input-folder ./mycsvs/ -output-file ./mynew.csv
+csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv
 ```
 
 1. `aggregate`: You provide a series of `group-by` columns, an aggregate `function` (sum, count, average) and an `output-file` path and the system will generate a new CSV with the result of the aggregation.
 
 ```bash
-csv-do aggregate -input-file ./myfile.csv -group-by "1,2,3" -function count -function-column 4 -output-file ./count.csv
+csv-do aggregate --input-file ./myfile.csv --group-by "1,2,3" --function count --function-column 4 --output-file ./count.csv
 ```
 
 1. `find-duplicates`: You provide an `input-file`, one or more `columns` to search for duplicate values in the file and an `output-file` path. The system will generate an output file with the results of duplicates search.
 
 ```bash
-csv-do find-duplicates -input-file ./myfile.csv -columns "1,2,3" -output-file ./count.csv
+csv-do find-duplicates --input-file ./myfile.csv --columns "1,2,3" --output-file ./count.csv
 ```

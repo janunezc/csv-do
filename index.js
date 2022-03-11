@@ -10,37 +10,61 @@ const { Z_DEFAULT_COMPRESSION } = require("zlib");
 
   lh.splash();
   lh.usage();
-
-  console.log("Checking for parameters...")
-
-  let args = minimist(process.argv.slice(2), {
-    alias: {
-      file: 'f',
-      action: 'a',
-      column: 'c'
-    }
-  });
-
-  console.log(args);
-
-  switch (args.a) {
-    case "split_by_num":
-      splitByNum(args);
-      break;
-    default:
-      console.error("ERR", `***ERROR: Invalid -a (action) parameter supplied "${args.a}"`);
-  }
+  const _args = checkParameters();
+  csvdo(_args);
 
 
-
+  /*********************/
   /*------------------------------------------------------------------------*/
   ///FUNCTIONS
 
   function checkParameters() {
-
+    let m_args = minimist(process.argv.slice(2), {
+      alias: {
+        split: 'sp',
+        'input-file': 'if',
+        'output-folder': 'of',
+        column: 'c'
+      }
+    });
+    console.log("M_ARGS", m_args);
+    return m_args;
   }
 
-  function csvdo() {
+  function csvdo(_args) {
+    let action = _args._[0];
+
+    console.log("ACTION", action);
+
+    switch (action) {
+      case "split":
+        console.log("SPLIT REQUESTED!");
+        break;
+      case "sp":
+        console.log("SPLIT REQUESTED!");
+        break;
+      case "join":
+        console.log("JOIN REQUESTED!");
+        break;
+      case "jo":
+        console.log("JOIN REQUESTED!");
+        break;
+      case "aggregate":
+        console.log("AGGREGATE REQUESTED!");
+        break;
+      case "ag":
+        console.log("AGGREGATE REQUESTED!");
+        break;
+      case "find-duplicates":
+        console.log("FIND DUPLICATES REQUESTED!");
+        break;
+      case "fd":
+        console.log("FIND DUPLICATES REQUESTED!");
+        break;
+      default:
+        console.error(`ERROR: Invalid Action ${action}`);
+
+    }
 
   }
 
@@ -95,13 +119,19 @@ const { Z_DEFAULT_COMPRESSION } = require("zlib");
 
         out("csv-do can perform the following functions for you on CSV files: split, join, aggregate, find-duplicates");
         out("Examples:");
-        out("SPLIT:      csv-do split -input-file ./myfile.csv -column 2 -output-folder ./splitted/");
-        out("JOIN:       csv-do join -input-folder ./mycsvs/ -output-file ./mynew.csv");
-        out("AGGREGATE:  csv-do aggregate -input-file ./myfile.csv -group-by \"1,2,3\" -function count -function-column 4 -output-file ./count.csv");
-        out("FIND DUPS:  csv-do find-duplicates -input-file ./myfile.csv -columns \"1,2,3\" -output-file ./count.csv");
+        out("SPLIT:      csv-do split --input-file ./myfile.csv --columns 2 --output-folder ./splitted/");
+        out("JOIN:       csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv");
+        out("AGGREGATE:  csv-do aggregate --input-file ./myfile.csv --group-by \"1,2,3\" --function count -function-column 4 --output-file ./count.csv");
+        out("FIND DUPS:  csv-do find-duplicates --input-file ./myfile.csv --columns \"1,2,3\" --output-file ./count.csv");
 
         lh.footer("Have a nice day!")
       }
     }
   }
 })();
+
+
+/*
+Thanks:
+https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
+*/

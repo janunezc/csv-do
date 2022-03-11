@@ -15,7 +15,14 @@ npm i csv-do -g
 1. `split`: You provide an `input-file` and a `column` number that has values to group content by and splits one csv file into different files based on the content of that column.
 
 ```bash
-csv-do split --input-file ./myfile.csv --column 2 --output-folder ./splitted/
+#split myfile.csv by the content of the 2nd column. Drop the files in folder ./splitted
+csv-do split --input-file ./myfile.csv --columns 2 --output-folder ./splitted/
+
+#split myfile.csv by the content of the 2nd and 5th columns combined. Drop the files in folder ./splitted
+csv-do split --input-file ./myfile.csv --columns 2,5 --output-folder ./splitted/
+
+#split myfile.csv in files of 100 rows maximum. Drop the files in folder ./splitted
+csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./splitted/
 ```
 
 1. `join`: You provide an `input-folder` and an `output-file` path. The system will concatenate all CSV files in the input folder (ordered by name) and save it to the output file.

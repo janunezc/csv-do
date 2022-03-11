@@ -1,32 +1,33 @@
-(()=>{
+const { Z_DEFAULT_COMPRESSION } = require("zlib");
+
+(() => {
   const minimist = require("minimist");
   const csv = require('csvtojson');
+  const fs = require('fs');
   let jnl = require("jnconsole");
+  let lh = logHelper();
 
-
-  console.log("TITLE","\n".repeat(30) + "WELCOME TO YOUR CSV-DO APP\nYour swiss army knife for manipulating CSV files from the command line");
-  console.log("SUBTITLE","With CSV-DO you can do operations on csv files such as split, merge, aggregate, slice/dice through the command line");
-
-  showUsage();
+  lh.splash();
+  lh.usage();
 
   console.log("Checking for parameters...")
 
   let args = minimist(process.argv.slice(2), {
-      alias: {
-          file: 'f',
-          action: 'a',
-          column: 'c'
-      }
+    alias: {
+      file: 'f',
+      action: 'a',
+      column: 'c'
+    }
   });
 
   console.log(args);
 
-  switch(args.a){
+  switch (args.a) {
     case "split_by_num":
       splitByNum(args);
-    break;
+      break;
     default:
-    console.error("ERR",`***ERROR: Invalid -a (action) parameter supplied "${args.a}"`);
+      console.error("ERR", `***ERROR: Invalid -a (action) parameter supplied "${args.a}"`);
   }
 
 
@@ -34,51 +35,72 @@
   /*------------------------------------------------------------------------*/
   ///FUNCTIONS
 
-  async function splitByNum(args){
+  function checkParameters() {
 
-    const csv = require('csvtojson');
+  }
 
-    console.log("HEADING","Split by Number of Records!");
+  function csvdo() {
 
-    console.log("BODY","loading the file...");
-
-    try {
-        csvJson = await csv({
-            noheader: true,
-            ignoreEmpty: true
-        }).fromFile(args.f);
-
-        console.log("BODY",`File loaded! ${csvJson.length} rows.`);
-        console.log("BODY","Assuming first row is headers");
-        const row_0 = csvJson.shift();
-        console.log(row_0, csvJson.length);
-
-        let files = [];
+  }
 
 
-    } catch (error) {
-        console.log("BODY",`***ERROR: "${error}"`);
-        console.error(`Error reading CSV file: ${error}`);
+  function split(csvContent, maxRecords) {
+
+  }
+
+  function join() {
+
+  }
+
+  function aggregate() {
+
+  }
+
+  function findDuplicates() {
+
+  }
+
+  function logHelper() {
+    return {
+      splash: function () {
+        const out = console.info;
+
+        out("\n".repeat(30));
+        out("-".repeat(30));
+        out("WELCOME TO YOUR CSV-DO APP\nYour swiss army knife for manipulating CSV files from the command line");
+        out("With CSV-DO you can do operations on csv files such as split, join, aggregate, find duplicates through the command line.");
+        out("\n (!) NOTICE THIS TOOL IS STILL NOT FUNCTIONAL AT ALL!")
+      },
+      header: function (text) {
+        const out = console.info;
+        out("\n".repeat(2));
+        out("-".repeat(30));
+        out("-".repeat(30));
+        out(text);
+      },
+
+      footer: function (text) {
+        const out = console.info;
+        out("\n");
+        out("-".repeat(30));
+        out(text);
+        out("-".repeat(30));
+        out("-".repeat(30));
+        out("\n");
+      },
+      usage: function () {
+        lh.header("HOW TO USE csv-do");
+        const out = console.info;
+
+        out("csv-do can perform the following functions for you on CSV files: split, join, aggregate, find-duplicates");
+        out("Examples:");
+        out("SPLIT:      csv-do split -input-file ./myfile.csv -column 2 -output-folder ./splitted/");
+        out("JOIN:       csv-do join -input-folder ./mycsvs/ -output-file ./mynew.csv");
+        out("AGGREGATE:  csv-do aggregate -input-file ./myfile.csv -group-by \"1,2,3\" -function count -function-column 4 -output-file ./count.csv");
+        out("FIND DUPS:  csv-do find-duplicates -input-file ./myfile.csv -columns \"1,2,3\" -output-file ./count.csv");
+
+        lh.footer("Have a nice day!")
+      }
     }
-
-
-    console.log("BODY","Initiating logic...");
-
-    console.log("BODY","Logic Finished!");
   }
-
-  function split(csvContent, maxRecords){
-
-  }
-
-  function sleep(delay) {
-    const start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-  }
-
-  function showUsage(){
-    console.log("HEADING","USAGE:");
-    console.log("BODY","Split a large file into chunks of 300 rows each: csv-do -a split_by_num -q 300 -f mylargefile.csv");
-  }
-
 })();

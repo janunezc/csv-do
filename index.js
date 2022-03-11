@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { Z_DEFAULT_COMPRESSION } = require("zlib");
 
 (() => {

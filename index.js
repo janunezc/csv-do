@@ -24,7 +24,7 @@ const { Z_DEFAULT_COMPRESSION } = require("zlib");
         split: 'sp',
         'input-file': 'if',
         'output-folder': 'of',
-        column: 'c'
+        columns: 'c'
       }
     });
     console.log("M_ARGS", m_args);
@@ -38,38 +38,64 @@ const { Z_DEFAULT_COMPRESSION } = require("zlib");
 
     switch (action) {
       case "split":
-        console.log("SPLIT REQUESTED!");
-        break;
       case "sp":
         console.log("SPLIT REQUESTED!");
+        split(_args);
         break;
       case "join":
-        console.log("JOIN REQUESTED!");
-        break;
       case "jo":
         console.log("JOIN REQUESTED!");
+        join();
         break;
       case "aggregate":
-        console.log("AGGREGATE REQUESTED!");
-        break;
       case "ag":
         console.log("AGGREGATE REQUESTED!");
+        aggregate();
         break;
       case "find-duplicates":
-        console.log("FIND DUPLICATES REQUESTED!");
-        break;
       case "fd":
         console.log("FIND DUPLICATES REQUESTED!");
+        findDuplicates();
         break;
       default:
         console.error(`ERROR: Invalid Action ${action}`);
-
     }
-
   }
 
 
-  function split(csvContent, maxRecords) {
+  function split(_args) {
+    const inputFilePath = _args.if;
+    const columns = _args.c;
+    const outputFolderPath = _args.of;
+    const valParams = split_validateParams(inputFilePath, columns, outputFolderPath);
+
+    if (valParams) {
+
+    } else {
+      console.error("Parameters are invalid!");
+    }
+  }
+
+  function split_validateParams(inputFilePath, columns, outputFolderPath) {
+    let errorCount = 0;
+    if (!fs.existsSync(inputFilePath)) {
+      console.error("ERROR", "--input-file parameter is invalid!", inputFilePath);
+      errorCount++;
+    }
+
+    if (!columns) {
+      console.error("ERROR", "--columns parameter is invalid!", columns);
+      errorCount++;
+    }
+
+    if (!fs.existsSync(outputFolderPath)) {
+      console.error("ERROR", "--output-folder parameter is invalid!", outputFolderPath);
+      errorCount++;
+    }
+
+    if (errorCount === 0) {
+      return { inputFilePath, columns, outputFolderPath };
+    }
 
   }
 
@@ -83,6 +109,11 @@ const { Z_DEFAULT_COMPRESSION } = require("zlib");
 
   function findDuplicates() {
 
+  }
+
+  function getParamsObject(_args) {
+    let action = _args._[0];
+    s
   }
 
   function logHelper() {

@@ -6,7 +6,7 @@
   const csvdo = require('./csv-do-lib');
   const csvDoVersion = require("./package.json").version;
   const fs = require('fs');
-  var sc = require('SuperColors.js');
+  var sc = require('colors');
   let jnl = require("jnconsole");
   let lh = logHelper();
   

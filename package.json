@@ -32,6 +32,7 @@
     "csvtojson": "^2.0.10",
     "jnconsole": "^0.4.0",
     "minimist": "^1.2.5",
+    "objects-to-csv": "^1.3.6",
     "supercolors.js": "^1.0.3"
   },
   "bin": {

@@ -2,7 +2,7 @@
 
 (() => {
   const minimist = require("minimist");
-  const csv = require('csvtojson');
+  
   const csvdo = require('./csv-do-lib');
   const csvDoVersion = require("./package.json").version;
   const fs = require('fs');
@@ -40,17 +40,7 @@
 
 
 
-  function join() {
 
-  }
-
-  function aggregate() {
-
-  }
-
-  function findDuplicates() {
-
-  }
 
   function getParamsObject(_args) {
     let action = _args._[0];

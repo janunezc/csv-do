@@ -28,7 +28,12 @@ csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/
 1. `compare`: You provide two file paths (`--file1` and `--file2`) and a list of column numbers to match rows by (`--colKeys`) and the system will highlight differences between the two files in records found by those columns.
 
 ```bash
-csv-do compare --file1 ./file1.csv --file2 ./file2.csv --columns "1,2,3" --outputFile ./file3.csv
+#compare file0.csv against file2.csv row by row. Dump the result into result.csv
+csv-do compare --file1 ./file0.csv --file2 ./file2.csv  --output-file ./result.csv
+
+#(Not Implemented Yet!) compare file0.csv against file2.csv row by row. using columns 5,16,20 as search keys. Dump the result into result.csv
+csv-do compare --file1 ./file0.csv --file2 ./file2.csv --key-columns "5,16,20" --output-file ./result.csv
+
 ```
 
 1. `join` (not implemented yet): You provide an `input-folder` and an `output-file` path. The system will concatenate all CSV files in the input folder (ordered by name) and save it to the output file.

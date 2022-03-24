@@ -29,11 +29,8 @@ csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/
 
 ```bash
 #compare file0.csv against file2.csv row by row. Dump the result into result.csv
-csv-do compare --file1 ./file0.csv --file2 ./file2.csv  --output-file ./result.csv
-
-#(Not Implemented Yet!) compare file0.csv against file2.csv row by row. using columns 5,16,20 as search keys. Dump the result into result.csv
-csv-do compare --file1 ./file0.csv --file2 ./file2.csv --key-columns "5,16,20" --output-file ./result.csv
-
+csv-do compare --file1 ./file1.csv --file2 ./file2.csv  --output-file ./result.csv
+csv-do compare --file1 ./file0.csv --file2 ./file2.csv  --output-file ./result2.csv
 ```
 
 1. `join` (not implemented yet): You provide an `input-folder` and an `output-file` path. The system will concatenate all CSV files in the input folder (ordered by name) and save it to the output file.

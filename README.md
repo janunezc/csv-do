@@ -25,28 +25,12 @@ csv-do split --input-file ./myfile.csv --columns 2,5 --output-folder ./split/
 csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/
 ```
 
-1. `compare`: You provide two file paths (`--file1` and `--file2`) and a list of column numbers to match rows by (`--colKeys`) and the system will highlight differences between the two files in records found by those columns.
+1. `compare`: You provide two file paths (`--file1` and `--file2`) and the system will highlight differences between the two files in records found by those columns.
 
 ```bash
-#compare file0.csv against file2.csv row by row. Dump the result into result.csv
-csv-do compare --file1 ./file1.csv --file2 ./file2.csv  --output-file ./compare_result.csv
-csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --output-file ./compare_result2.csv
-```
+#compare file0.csv against file2.csv row by row.
+csv-do compare --file1 ./file1.csv --file2 ./file2.csv
 
-1. `join` (not implemented yet): You provide an `input-folder` and an `output-file` path. The system will concatenate all CSV files in the input folder (ordered by name) and save it to the output file.
-
-```bash
-csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv
-```
-
-1. `aggregate` (not implemented yet): You provide a series of `group-by` columns, an aggregate `function` (sum, count, average) and an `output-file` path and the system will generate a new CSV with the result of the aggregation.
-
-```bash
-csv-do aggregate --input-file ./myfile.csv --group-by "1,2,3" --function count --function-column 4 --output-file ./count.csv
-```
-
-1. `find-duplicates` (not implemented yet): You provide an `input-file`, one or more `columns` to search for duplicate values in the file and an `output-file` path. The system will generate an output file with the results of duplicates search.
-
-```bash
-csv-do find-duplicates --input-file ./myfile.csv --columns "1,2,3" --output-file ./count.csv
+#compare file1b.csv against file2.csv row by row.
+csv-do compare --file1 ./file1b.csv --file2 ./file2.csv
 ```

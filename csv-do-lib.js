@@ -181,10 +181,12 @@ const ObjectsToCsv = require('objects-to-csv');
             errorCount++;
         }
 
+        /*
         if (!outputFile) {
             console.error("ERROR", "--output-file parameter is invalid!", file2);
             errorCount++;
         }
+        */
 
         if (columns) {
             let colArray = JSON.parse(`[${columns}]`);

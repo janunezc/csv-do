@@ -90,8 +90,11 @@
         out("            csv-do split --input-file ./myfile.csv --columns 2,5 --output-folder ./split/");
         out("            csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/");
         out("");
-        out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv --output-file ./compare_result1.csv");
-        out("COMPARE:    csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --output-file ./compare_result2.csv");
+        out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv");
+        out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv");
+
+        //out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv --output-file ./compare_result1.csv");
+        //out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --output-file ./compare_result2.csv");        
         //out("            csv-do compare --file1 ./file1.csv --file2 ./file2.csv --columns \"1,2,3\" --outputFile ./file3.csv");
         /**
         out("JOIN:       csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv");

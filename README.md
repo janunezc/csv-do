@@ -28,7 +28,7 @@ csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/
 1. `compare`: You provide two file paths (`--file1` and `--file2`) and the system will highlight differences between the two files in records found by those columns.
 
 ```bash
-#compare file0.csv against file2.csv row by row.
+#compare file1.csv against file2.csv row by row.
 csv-do compare --file1 ./file1.csv --file2 ./file2.csv
 
 #compare file1b.csv against file2.csv row by row.

@@ -47,6 +47,7 @@ const ObjectsToCsv = require('objects-to-csv');
         const file1 = _args.f1;
         const file2 = _args.f2;
         const columns = _args.c;
+        const searchColumns = _args.sc;
         const outputFile = _args.ofl;
 
         const valParams = compare_validateParams(file1, file2, columns, outputFile);
@@ -56,6 +57,7 @@ const ObjectsToCsv = require('objects-to-csv');
             console.log("Parameters are valid".green);
             console.log("Will compare files: ", file1, file2);
             console.log("Columns Spec:", columns);
+            console.log("Search Columns Spec:", searchColumns);
             console.log("Output File:", outputFile);
 
             console.log("Reading File1...", file1);
@@ -69,7 +71,7 @@ const ObjectsToCsv = require('objects-to-csv');
                         .then((csv2) => {
                             console.log("File 2 read!", csv2.length);
 
-                            if (!columns) {
+                            if (!searchColumns) {
                                 const result = compare_wo_cols(csv1, csv2, outputFile);
                                 console.log("result wo cols");
                             } else {

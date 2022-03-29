@@ -31,23 +31,12 @@
         'output-folder': 'of',
         'output-file':'ofl',
         'columns': 'c',
+        'search-columns':'sc',
         'chunk-size': 'cs'
       }
     });
     console.log("M_ARGS", m_args);
     return m_args;
-  }
-
-
-
-
-
-
-
-
-  function getParamsObject(_args) {
-    let action = _args._[0];
-    s
   }
 
   function logHelper() {
@@ -92,6 +81,7 @@
         out("");
         out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv");
         out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv");
+        out("            csv-do compare --file1 ./file1c.csv --file2 ./file2.csv --search-columns \"5,16,20\"");
 
         //out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv --output-file ./compare_result1.csv");
         //out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --output-file ./compare_result2.csv");        

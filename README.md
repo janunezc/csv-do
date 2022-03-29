@@ -33,4 +33,7 @@ csv-do compare --file1 ./file1.csv --file2 ./file2.csv
 
 #compare file1b.csv against file2.csv row by row.
 csv-do compare --file1 ./file1b.csv --file2 ./file2.csv
+
+#compare file1c.csv against file2.csv by finding rows in file2.csv that match those in file1c.csv by the columns specified in --search-columns parameter.
+csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --search-columns \"5,16,20\"
 ```

@@ -17,6 +17,11 @@ const ObjectsToCsv = require('objects-to-csv');
                 console.log("SPLIT REQUESTED!");
                 split(_args);
                 break;
+            case "compare":
+            case "co":
+                console.log("COMPARE REQUESTED");
+                compare(_args);
+                break;
             case "join":
             case "jo":
                 console.log("JOIN REQUESTED!");
@@ -35,6 +40,165 @@ const ObjectsToCsv = require('objects-to-csv');
                 break;
             default:
                 console.error(`ERROR: Invalid Action ${action}`);
+        }
+    }
+
+    function compare(_args) {
+        const file1 = _args.f1;
+        const file2 = _args.f2;
+        const columns = _args.c;
+        const outputFile = _args.ofl;
+
+        const valParams = compare_validateParams(file1, file2, columns, outputFile);
+
+        if (valParams) {
+
+            console.log("Parameters are valid".green);
+            console.log("Will compare files: ", file1, file2);
+            console.log("Columns Spec:", columns);
+            console.log("Output File:", outputFile);
+
+            console.log("Reading File1...", file1);
+            csv()
+                .fromFile(file1)
+                .then((csv1) => {
+                    console.log("File 1 read!", csv1.length);
+                    console.log("Reading File2...", file2);
+                    csv()
+                        .fromFile(file2)
+                        .then((csv2) => {
+                            console.log("File 2 read!", csv2.length);
+
+                            if (!columns) {
+                                const result = compare_wo_cols(csv1, csv2, outputFile);
+                                console.log("result wo cols");
+                            } else {
+                                const result = compare_by_cols(csv1, csv2, columns, outputFile);
+                                console.log("result by cols", result);
+                            }
+                        })
+                        .error((e) => {
+                            console.error("ERROR!", e);
+                        });
+                })
+                .error((e) => {
+                    console.error("ERROR!", e);
+                });
+
+
+        } else {
+            console.error("Parameters are invalid!".red);
+        }
+    }
+
+    /**
+     * Compares two csv contents row by row and outputs the results of the comparison.
+     * @param {fs file} csv1 
+     * @param {fs file} csv2 
+     * @param {output file path} outputFile 
+     */
+    function compare_wo_cols(csv1, csv2, outputFile) {
+        let findings = [];
+        let rowsWithFindings = 0;
+        let cellsWithFindings = 0;
+
+        for (rowNum = 0; rowNum < csv1.length; rowNum++) {
+            let row1 = csv1[rowNum];
+            let row2 = csv2[rowNum];
+            let rowComparison = compareRows(rowNum, row1, row2);
+
+            if (rowComparison.length > 0) {
+                rowsWithFindings++;
+                cellsWithFindings += rowComparison.length;
+                findings.push(rowComparison);
+            }
+        }
+
+        if (findings === undefined || findings.length === 0) {
+            if (csv1.length === csv2.length) {
+                console.log(`No differences found on files. Both have ${csv1.length} rows that match field by field`.green);
+            } else {
+                console.log(`All rows in file1 match rows in file2.`.green);
+                console.log(`   Though file2 has more rows! ${csv1.length} rows in file1 vs. ${csv2.length} rows in file2`.green);
+            }
+        } else {
+            console.log(`Issues found in ${cellsWithFindings} cells within ${rowsWithFindings} rows!`.red);
+
+        }
+        return findings;
+
+    }
+
+    function compareRows(rowNum, row1, row2) {
+        let row1Keys = Object.keys(row1);
+        let keyIndex = 0;
+
+        let issuesFound = [];
+
+        for (key of row1Keys) {
+            if (rowNum === 0) {
+                console.log(`Analyzing row ${rowNum} for key ${key}`);
+            }
+            if (row1[key] !== row2[key]) {
+                issuesFound.push(`Column "${key}"! V1:"${row1[key]}" should match V2:"${row2[key]}" @ row ${rowNum}`.yellow);
+            }
+            keyIndex++;
+        }
+
+        if (issuesFound.length === 0) {
+            //console.log(`ROW: ${rowNum} is a full match!`.green);
+        } else {
+            console.log(`ROW: ${rowNum} has differences!`.red);
+            issuesFound.map((issue) => {
+                console.log(`    Item: ${issue}`);
+            });
+        }
+
+        return issuesFound;
+
+    }
+
+    /**
+     * Compares two csv contents finding matching rows by the provided columns.
+     * @param {*} csv1 
+     * @param {*} csv2 
+     * @param {*} columns 
+     * @param {*} outputFile 
+     */
+    function compare_by_cols(csv1, csv2, columns, outputFile) {
+
+    }
+
+    function compare_validateParams(file1, file2, columns, outputFile) {
+        let errorCount = 0;
+        if (!fs.existsSync(file1)) {
+            console.error("ERROR", "--file1 parameter is invalid!", file1);
+            errorCount++;
+        }
+
+        if (!fs.existsSync(file2)) {
+            console.error("ERROR", "--file2 parameter is invalid!", file2);
+            errorCount++;
+        }
+
+        /*
+        if (!outputFile) {
+            console.error("ERROR", "--output-file parameter is invalid!", file2);
+            errorCount++;
+        }
+        */
+
+        if (columns) {
+            let colArray = JSON.parse(`[${columns}]`);
+
+            if (colArray.length == 0) {
+                console.error("ERROR", "--columns parameter is invalid!", file2);
+                errorCount++;
+            }
+        }
+
+        if (errorCount === 0) {
+            return { file1, file2, columns, outputFile };
         }
     }
 

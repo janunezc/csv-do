@@ -25,9 +25,12 @@
     let m_args = minimist(process.argv.slice(2), {
       alias: {
         split: 'sp',
+        'file1':'f1',
+        'file2':'f2',
         'input-file': 'if',
         'output-folder': 'of',
-        columns: 'c',
+        'output-file':'ofl',
+        'columns': 'c',
         'chunk-size': 'cs'
       }
     });
@@ -86,11 +89,18 @@
         out("SPLIT:      csv-do split --input-file ./myfile.csv --columns 2 --output-folder ./split/");
         out("            csv-do split --input-file ./myfile.csv --columns 2,5 --output-folder ./split/");
         out("            csv-do split --input-file myfile.csv --chunk-size 100 --output-folder ./split/");
+        out("");
+        out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv");
+        out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv");
 
+        //out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv --output-file ./compare_result1.csv");
+        //out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --output-file ./compare_result2.csv");        
+        //out("            csv-do compare --file1 ./file1.csv --file2 ./file2.csv --columns \"1,2,3\" --outputFile ./file3.csv");
+        /**
         out("JOIN:       csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv");
         out("AGGREGATE:  csv-do aggregate --input-file ./myfile.csv --group-by \"1,2,3\" --function count -function-column 4 --output-file ./count.csv");
         out("FIND DUPS:  csv-do find-duplicates --input-file ./myfile.csv --columns \"1,2,3\" --output-file ./count.csv");
-
+        */
         lh.footer("Have a nice day!")
       }
     }

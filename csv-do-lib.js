@@ -38,6 +38,10 @@ const ObjectsToCsv = require('objects-to-csv');
                 console.log("FIND DUPLICATES REQUESTED!");
                 findDuplicates();
                 break;
+            case "check":
+            case "ck":
+                checkCsv(_args);
+                break;
             default:
                 console.error(`ERROR: Invalid Action ${action}`);
         }
@@ -363,6 +367,68 @@ const ObjectsToCsv = require('objects-to-csv');
     function findDuplicates() {
         console.error("OUR APOLOGIES. FIND DUPLICATES IS NOT IMPLEMENTED YET. PLEASE COME BACK SOON!".bgRed);
     }
+
+    function checkCsv(_args) {
+        const csvFile = _args.if;
+        const schemaFile = _args.schema;
+      
+        if (!fs.existsSync(csvFile)) {
+          console.error("ERROR: CSV file does not exist:", csvFile);
+          return;
+        }
+      
+        if (!fs.existsSync(schemaFile)) {
+          console.error("ERROR: Schema file does not exist:", schemaFile);
+          return;
+        }
+      
+        Promise.all([csv().fromFile(csvFile), fs.promises.readFile(schemaFile)])
+          .then(([csvData, schemaRaw]) => {
+            const schema = JSON.parse(schemaRaw);
+            const expectedHeaders = schema.columns;
+            const dateTimeColumns = schema.datetime_columns || [];
+      
+            // Check headers
+            const actualHeaders = Object.keys(csvData[0]);
+            if (JSON.stringify(expectedHeaders) !== JSON.stringify(actualHeaders)) {
+              console.error("ERROR: CSV headers do not match schema!");
+              console.error("Expected:", expectedHeaders);
+              console.error("Actual:", actualHeaders);
+              return;
+            }
+      
+            // Check each row
+            let rowErrors = 0;
+            csvData.forEach((row, idx) => {
+                const cols = Object.keys(row);
+              
+                // Check hidden columns
+                if (cols.length !== expectedHeaders.length) {
+                rowErrors++;
+                console.error(`Row ${idx + 1}: Incorrect number of columns (expected ${expectedHeaders.length}, found ${cols.length}).`);
+                }
+      
+                // Check datetime format (YYYY-mm-dd hh:mm:ss.fff)
+                dateTimeColumns.forEach(dtCol => {
+                    if (row[dtCol] && !/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})\.(\d{3})$/.test(row[dtCol])) {
+                    rowErrors++;
+                    console.error(`Row ${idx + 1}, Column "${dtCol}": Incorrect datetime format (expected YYYY-mm-dd hh:mm:ss.fff). Found: "${row[dtCol]}"`);
+                    }
+                });
+            });
+      
+            if (rowErrors === 0) {
+              console.log("CSV Check PASSED! No errors found.");
+            } else {
+              console.error(`CSV Check FAILED! ${rowErrors} error(s) found.`);
+            }
+          })
+          .catch(err => {
+            console.error("An error occurred during validation:", err);
+          });
+      }
+      
+
 
     exports.Do = doAction;
 

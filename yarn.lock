@@ -14,7 +14,7 @@ assert@^2.0.0:
 
 async-csv@^2.1.3:
   version "2.1.3"
-  resolved "https://registry.yarnpkg.com/async-csv/-/async-csv-2.1.3.tgz#d6e43c61050ed3501b57f53c4c28943c5da59172"
+  resolved "https://registry.npmjs.org/async-csv/-/async-csv-2.1.3.tgz"
   integrity sha512-mpsCN+D7mzZeqrlDw7UTPhvDQDlx1i819E9fbKIt8drkgED5FSOlBv3Rk/+sXdevnO2wwlRkVOQ4kdT0AyqPqQ==
   dependencies:
     csv "^5.1.3"
@@ -37,24 +37,29 @@ call-bind@^1.0.0, call-bind@^1.0.2:
     function-bind "^1.1.1"
     get-intrinsic "^1.0.2"
 
+colors@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/colors/-/colors-1.4.0.tgz"
+  integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
+
 csv-generate@^3.4.3:
   version "3.4.3"
-  resolved "https://registry.yarnpkg.com/csv-generate/-/csv-generate-3.4.3.tgz#bc42d943b45aea52afa896874291da4b9108ffff"
+  resolved "https://registry.npmjs.org/csv-generate/-/csv-generate-3.4.3.tgz"
   integrity sha512-w/T+rqR0vwvHqWs/1ZyMDWtHHSJaN06klRqJXBEpDJaM/+dZkso0OKh1VcuuYvK3XM53KysVNq8Ko/epCK8wOw==
 
 csv-parse@^4.16.3:
   version "4.16.3"
-  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.16.3.tgz#7ca624d517212ebc520a36873c3478fa66efbaf7"
+  resolved "https://registry.npmjs.org/csv-parse/-/csv-parse-4.16.3.tgz"
   integrity sha512-cO1I/zmz4w2dcKHVvpCr7JVRu8/FymG5OEpmvsZYlccYolPBLoVGKUHgNoc4ZGkFeFlWGEDmMyBM+TTqRdW/wg==
 
 csv-stringify@^5.6.5:
   version "5.6.5"
-  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-5.6.5.tgz#c6d74badda4b49a79bf4e72f91cce1e33b94de00"
+  resolved "https://registry.npmjs.org/csv-stringify/-/csv-stringify-5.6.5.tgz"
   integrity sha512-PjiQ659aQ+fUTQqSrd1XEDnOr52jh30RBurfzkscaE2tPaFsDH5wOAHJiw8XAHphRknCwMUE9KRayc4K/NbO8A==
 
 csv@^5.1.3:
   version "5.5.3"
-  resolved "https://registry.yarnpkg.com/csv/-/csv-5.5.3.tgz#cd26c1e45eae00ce6a9b7b27dcb94955ec95207d"
+  resolved "https://registry.npmjs.org/csv/-/csv-5.5.3.tgz"
   integrity sha512-QTaY0XjjhTQOdguARF0lGKm5/mEq9PD9/VhZZegHDIBq2tQwgNpHc3dneD4mGo2iJs+fTKv5Bp0fZ+BRuY3Z0g==
   dependencies:
     csv-generate "^3.4.3"
@@ -116,12 +121,12 @@ es-to-primitive@^1.2.1:
 es6-object-assign@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/es6-object-assign/-/es6-object-assign-1.1.0.tgz"
-  integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
+  integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw= sha512-MEl9uirslVwqQU369iHNWZXsI8yaZYGg/D65aOgZkeyFJwHYSxilf7rQzXKI7DdDuBPrBXbfk3sl9hJhmd5AUw==
 
 foreach@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/foreach/-/foreach-2.0.5.tgz"
-  integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
+  integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k= sha512-ZBbtRiapkZYLsqoPyZOR+uPfto0GRMNQN1GwzZtZt7iZvPPbDDQV0JF5Hx4o/QFQ5c0vyuoZ98T8RSBbopzWtA==
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -286,7 +291,7 @@ is-typed-array@^1.1.3, is-typed-array@^1.1.7:
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://registry.npmjs.org/is-utf8/-/is-utf8-0.2.1.tgz"
-  integrity sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=
+  integrity sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI= sha512-rMYPYvCzsXywIsldgLaSoPlw5PfoB/ssr7hY4pLfcodrA5M/eArza1a9VmTiNIBNMjOGr1Ow9mTyU2o69U6U9Q==
 
 is-weakref@^1.0.1:
   version "1.0.2"
@@ -314,7 +319,7 @@ minimist@^1.2.5:
 
 mixme@^0.5.1:
   version "0.5.4"
-  resolved "https://registry.yarnpkg.com/mixme/-/mixme-0.5.4.tgz#8cb3bd0cd32a513c161bf1ca99d143f0bcf2eff3"
+  resolved "https://registry.npmjs.org/mixme/-/mixme-0.5.4.tgz"
   integrity sha512-3KYa4m4Vlqx98GPdOHghxSdNtTvcP8E0kkaJ5Dlh+h2DRzF7zpuVVcA8B0QpKd11YJeP9QQ7ASkKzOeu195Wzw==
 
 object-inspect@^1.11.0, object-inspect@^1.9.0:
@@ -347,7 +352,7 @@ object.assign@^4.1.2:
 
 objects-to-csv@^1.3.6:
   version "1.3.6"
-  resolved "https://registry.yarnpkg.com/objects-to-csv/-/objects-to-csv-1.3.6.tgz#05f25144099151ee915d2dd1458d4dd3ea96d84a"
+  resolved "https://registry.npmjs.org/objects-to-csv/-/objects-to-csv-1.3.6.tgz"
   integrity sha512-383eSpS3hmgCksW85KIqBtcbgSW5DDVsCmzLoM6C3q4yzOX2rmtWxF4pbLJ76fz+ufA+4/SwAT4QdaY6IUWmAg==
   dependencies:
     async-csv "^2.1.3"
@@ -368,7 +373,7 @@ side-channel@^1.0.4:
 
 stream-transform@^2.1.3:
   version "2.1.3"
-  resolved "https://registry.yarnpkg.com/stream-transform/-/stream-transform-2.1.3.tgz#a1c3ecd72ddbf500aa8d342b0b9df38f5aa598e3"
+  resolved "https://registry.npmjs.org/stream-transform/-/stream-transform-2.1.3.tgz"
   integrity sha512-9GHUiM5hMiCi6Y03jD2ARC1ettBXkQBoQAe7nJsPknnI0ow10aXjTnew8QtYQmLjzn974BnmWEAJgCY6ZP1DeQ==
   dependencies:
     mixme "^0.5.1"
@@ -392,14 +397,9 @@ string.prototype.trimstart@^1.0.4:
 strip-bom@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-2.0.0.tgz"
-  integrity sha1-YhmoVhZSBJHzV4i9vxRHqZx+aw4=
+  integrity sha1-YhmoVhZSBJHzV4i9vxRHqZx+aw4= sha512-kwrX1y7czp1E69n2ajbG65mIo9dqvJ+8aBQXOGVxqwvNbsXdFM6Lq37dLAY3mknUwru8CfcCbfOLL/gMo+fi3g==
   dependencies:
     is-utf8 "^0.2.0"
-
-supercolors.js@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/supercolors.js/-/supercolors.js-1.0.3.tgz#b22c93257da8e8a978c6cd954cf2f4c44ec0a4a3"
-  integrity sha512-fpLBEPYot/P5My5rxTsRviAbxPvZAJ2vdzHBPX2G6e/R/LQ0+dgdxnUlZJbuO6mfuvKzUZgu1OCk1nXhlIsfjA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

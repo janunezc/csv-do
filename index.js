@@ -24,14 +24,16 @@
   function checkParameters() {
     let m_args = minimist(process.argv.slice(2), {
       alias: {
-        split: 'sp',
-        'file1':'f1',
-        'file2':'f2',
+        'split': 'sp',
+        'check': 'ck',
+        'file1': 'f1',
+        'file2': 'f2',
         'input-file': 'if',
+        'schema': 's',
         'output-folder': 'of',
-        'output-file':'ofl',
+        'output-file': 'ofl',
         'columns': 'c',
-        'search-columns':'sc',
+        'search-columns': 'sc',
         'chunk-size': 'cs'
       }
     });
@@ -83,14 +85,9 @@
         out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv");
         out("            csv-do compare --file1 ./file1c.csv --file2 ./file2.csv --search-columns \"5,16,20\"");
 
-        //out("COMPARE:    csv-do compare --file1 ./file1.csv --file2 ./file2.csv --output-file ./compare_result1.csv");
-        //out("            csv-do compare --file1 ./file1b.csv --file2 ./file2.csv --output-file ./compare_result2.csv");        
-        //out("            csv-do compare --file1 ./file1.csv --file2 ./file2.csv --columns \"1,2,3\" --outputFile ./file3.csv");
-        /**
-        out("JOIN:       csv-do join --input-folder ./mycsvs/ --output-file ./mynew.csv");
-        out("AGGREGATE:  csv-do aggregate --input-file ./myfile.csv --group-by \"1,2,3\" --function count -function-column 4 --output-file ./count.csv");
-        out("FIND DUPS:  csv-do find-duplicates --input-file ./myfile.csv --columns \"1,2,3\" --output-file ./count.csv");
-        */
+        out("");
+        out("CHECK  :    csv-do check --if ./file_to_check.csv --schema ./schema.json");
+        out('            Exmple of schema file: { "columns":["id","title","created_dt],"datetime_columns":["created_dt"]}');
         lh.footer("Have a nice day!")
       }
     }
@@ -102,3 +99,4 @@
 Thanks:
 https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
 */
+
